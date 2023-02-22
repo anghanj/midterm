@@ -17,17 +17,40 @@ import java.util.Scanner;
  * @author srinivsi 
  */
 public class Status {
+     enum UserStatus {
+        REJECTED, PENDING, PROCESSING, APPROVED
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-    Scanner in =new Scanner(System.in);
-    System.out.println("Enter the user status code (zero,one,two,three) in string");
-    String code = in.next();
-    StausUser t= new StausUser();
-    t.statusDetail(code); 
+         Scanner in = new Scanner(System.in);
+        System.out.println("Enter the user status code (0, 1, 2, or 3):");
+        int code = in.nextInt();
+        UserStatus status;
+        switch (code) {
+            case 0:
+                status = UserStatus.REJECTED;
+                break;
+            case 1:
+                status = UserStatus.PENDING;
+                break;
+            case 2:
+                status = UserStatus.PROCESSING;
+                break;
+            case 3:
+                status = UserStatus.APPROVED;
+                break;
+            default:
+                System.out.println("NOT VALID CODE");
+                return;
+        }
+        StausUser t = new StausUser();
+        t.statusDetail(status);
     }
-    
+
 }
+    
+    
